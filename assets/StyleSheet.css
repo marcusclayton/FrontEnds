@@ -54,6 +54,16 @@ body {
     border: 1px solid transparent;
 }
 
+.table-bordered th,
+.table-bordered td {
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ddd !important;
+}
+.table-bordered {
+border: 1px solid #ddd;
+}
+
 .container {
     max-width: 400px;
     width: 100%;
