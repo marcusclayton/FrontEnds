@@ -18,33 +18,39 @@
                     <input type="text" name="customerName" id="customerName" placeholder="Customer Name"/>
                 </div>
                 <ul class="actions" style="list-style: none;">
-                    <li><input type="submit" value="Submit" class="special" /></li>
+                    <li><input type="submit" value="Submit" class="btn btn-lg btn-submit" /></li>
                     <!--<li><input type="reset" value="Reset" /></li>-->
                 </ul>
             </form>
-            <!--  start -->
-                <!-- Claims Table -->
-                <div class="row">
-                        <div class="page-header">
-                        <h2>Configured Claims</h2>
-                        <p>These are the claims associated with the current user and were sent directly from Azure Active Directory. The set of claims to include can be configured in the Azure AD application manifest in the Azure portal.</p>
-                        </div>
-                        <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                            <th>Claim</th>
-                            <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-claims"><tr><td>exp</td><td>1514924556</td></tr><tr><td>nbf</td><td>1514920956</td></tr><tr><td>ver</td><td>1.0</td></tr><tr><td>iss</td><td>https://login.microsoftonline.com/1b31c2c6-a181-47bc-90fb-a74ae9e12668/v2.0/</td></tr><tr><td>http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier</td><td>Not supported currently. Use oid claim.</td></tr><tr><td>aud</td><td>80d12efa-daa2-4a76-a2af-cc1ea42c89eb</td></tr><tr><td>http://schemas.microsoft.com/claims/authnclassreference</td><td>b2c_1_signuporsignin</td></tr><tr><td>nonce</td><td>2bca563465b9430796f4ac27405224a5_20180102192637</td></tr><tr><td>iat</td><td>1514920956</td></tr><tr><td>http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant</td><td>1514920956</td></tr><tr><td>http://schemas.microsoft.com/identity/claims/objectidentifier</td><td>8eecd3ef-f4de-4b79-9ff2-6d47f4af6dc4</td></tr><tr><td>postalCode</td><td>95051</td></tr><tr><td>name</td><td>marcusclayton</td></tr><tr><td>emails</td><td>marcusclayton@outlook.com</td></tr><tr><td>c_hash</td><td>wWcuwv4USVHbRXGzW0100A</td></tr></tbody>
-                        </table>
-                        <div>
-                        <!-- <a href="#" onclick="javascript:refreshTokens()" role="button" class="btn btn-lg btn-success">Refresh Tokens</a> -->
-                        </div>
-                    </div>
-
-            <!-- end -->
         </div>
+
+        <!--  start -->
+        <div id="center">
+            <button class="btn btn-lg btn-claims">Toggle AAD Claims</button>
+        </div>
+        <div id="signed-in-content" hidden="hidden" style="display: hidden;">
+            <!-- Claims Table -->
+            <div class="row">
+                    <div class="page-header">
+                    <h2>Configured Claims</h2>
+                    <p>These are the claims associated with the current user and were sent directly from Azure Active Directory. The set of claims to include can be configured in the Azure AD application manifest in the Azure portal.</p>
+                    </div>
+                    <table class="table table-bordered" align="center">
+                    <thead>
+                        <tr>
+                        <th>Claim</th>
+                        <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-claims"></tbody>
+                    </table>
+                    <div>
+                    <!-- <a href="#" onclick="javascript:refreshTokens()" role="button" class="btn btn-lg btn-success">Refresh Tokens</a> -->
+                    </div>
+                </div>
+        </div>
+        <!-- end -->
+
         <script src="https://mctestfunctionstgsite004.blob.core.windows.net/proxy/assets/js/main.js"></script>
         <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
         <script>
@@ -54,7 +60,7 @@
                 // If Easy Auth is enabled but the user is not logged in, this will return 401 Unauthorized.
                 $.getJSON('/.auth/me')
                 .done(function (data) {
-                    $('#signed-in-content').show();
+                    // $('#signed-in-content').show();
                     console.log('The request to /.auth/me returned the following JSON: ' + JSON.stringify(data));
 
                     // Parse the user claims and display them in a table
@@ -81,6 +87,10 @@
                     }
                 });
             }
+
+            $("button").click(function(){
+                $('#signed-in-content').toggle();
+            });
 
             checkLoginStatus();
 

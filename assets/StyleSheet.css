@@ -21,9 +21,10 @@ body {
     color: #777;
     background: #203864;
     background-image: url("https://mctestfunctionstgsite004.blob.core.windows.net/proxy/images/azure-serverless.png");
-    background-image: url("https://mctestfunctionstgsite004.blob.core.windows.net/proxy/images/azure-serverless.png"), linear-gradient(0deg, #203864,#203864 10%, #ffffff);
+    background-image: url("https://mctestfunctionstgsite004.blob.core.windows.net/proxy/images/azure-serverless.png"), linear-gradient(#ffffff,#203864 30%, #203864);
     background-repeat: no-repeat;
-    background-position: left;
+    background-position: left top;
+    background-attachment: fixed;
 }
 
 .btn-lg,
@@ -38,6 +39,18 @@ body {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
+}
+
+.btn-claims {
+    color: rgb(0, 0, 0);
+    background-color: #a6ff00;
+    border-color: #8bca0c;
+}
+
+.btn-submit {
+    color: rgb(0, 0, 0);
+    background-color: #00eeff;
+    border-color: #15beca;
 }
 
 .btn {
@@ -60,9 +73,8 @@ body {
     font-weight: bold;
     border: 1px solid #ddd !important;
 }
-.table-bordered {
-border: 1px solid #ddd;
-}
+
+/* .table-bordered { border: 1px solid #ddd; }*/
 
 .container {
     max-width: 400px;
@@ -78,6 +90,13 @@ border: 1px solid #ddd;
     position: relative;
     top: 5%;
     left: 30%;
+}
+
+#center {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 #customerForm input[type="text"], #customerForm input[type="email"], #customerForm input[type="tel"], #customerForm input[type="url"], #customerForm textarea, #customerForm button[type="submit"] {
